@@ -6,12 +6,25 @@ Defines MainWindow class.
     ~MainWindow
 """
 
+from bluesky_queueserver_api.zmq import REManagerAPI
 from PyQt5 import QtWidgets
 
 from . import APP_TITLE, utils
 from .user_settings import settings
 
 UI_FILE = utils.getUiFileName(__file__)
+
+# Connect to the QServer
+# def queueserver_api():
+#     try:
+#         #Where is the TOML file located?
+#         config = load_config()["queueserver"]
+#     except KeyError:
+#         raise InvalidConfiguration("Could not load queueserver info from iconfig.toml file.")
+#     ctrl_addr = f"tcp://{config['control_host']}:{config['control_port']}"
+#     info_addr = f"tcp://{config['info_host']}:{config['info_port']}"
+#     api = REManagerAPI(zmq_control_addr=ctrl_addr, zmq_info_addr=info_addr)
+#     return api
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -31,6 +44,47 @@ class MainWindow(QtWidgets.QMainWindow):
 
         settings.restoreWindowGeometry(self, "mainwindow_geometry")
         print("Settings are saved in:", settings.fileName())
+
+        self.RM = REManagerAPI()
+        self.REOpenButton.clicked.connect(self.openRunEngine)
+        self.RECloseButton.clicked.connect(self.closeRunEngine)
+
+    # RE Function:
+    def openRunEngine(self):
+        """Checks the status of the RE. Then opens the RE."""
+        if not self.RM.status().get("worker_environment_exists"):
+            # BUG: Status bar in app window does not print the statement below
+            self.setStatus("RE Environment is opening.", timeout=0)
+            self.RM.environment_open()
+            self.RM.wait_for_idle()
+            self.REEnvironmentStatusLabel.setText("Open")
+            self.REOpenButton.setEnabled(False)
+            self.RECloseButton.setEnabled(True)
+            self.setStatus("RE Environment is now open.", timeout=0)
+
+            # print(f"status = {self.RM.status().get('worker_environment_exists')}")
+        else:
+            pass
+
+    def closeRunEngine(self):
+        """Checks the status of the RE. Then closes the RunEngine."""
+        if self.RM.status().get("worker_environment_exists"):
+            self.setStatus("RE Environment is closing.", timeout=0)
+            self.RM.environment_close()
+            self.RM.wait_for_idle()
+            self.REEnvironmentStatusLabel.setText("Closed")
+            self.RECloseButton.setEnabled(False)
+            self.REOpenButton.setEnabled(True)
+            self.setStatus("RE Environment is now closed.", timeout=0)
+
+            # print(f"status = {self.RM.status().get('worker_environment_exists')}")
+        else:
+            pass
+
+    def destroyRunEngine(self):
+        """Destroys the RunEngine."""
+        # TODO: Remove this function.
+        self.RM.environment_destroy()
 
     @property
     def status(self):

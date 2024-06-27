@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
-    <height>364</height>
+    <width>1171</width>
+    <height>525</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,6 +53,227 @@
          <property name="toolTip">
           <string extracomment="Select"/>
          </property>
+         <widget class="QFrame" name="frame">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>1151</width>
+            <height>181</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::WinPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>3</number>
+          </property>
+          <property name="midLineWidth">
+           <number>5</number>
+          </property>
+          <widget class="QFrame" name="hostServerConnection">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>10</y>
+             <width>201</width>
+             <height>151</height>
+            </rect>
+           </property>
+           <widget class="QPushButton" name="connectButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>181</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Connect</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="disconnectButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>70</y>
+              <width>181</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Disconnect</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="hostServeConnectionLabel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>171</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Host Server Connection</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QFrame" name="environmentControl">
+           <property name="geometry">
+            <rect>
+             <x>250</x>
+             <y>10</y>
+             <width>201</width>
+             <height>161</height>
+            </rect>
+           </property>
+           <widget class="QPushButton" name="REOpenButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>181</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Open</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="RECloseButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>70</y>
+              <width>181</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Close</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="REDestroyButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>110</y>
+              <width>181</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Destroy</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="REControlLabel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>181</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Run Engine (RE) Control</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QFrame" name="queueControl">
+           <property name="geometry">
+            <rect>
+             <x>750</x>
+             <y>10</y>
+             <width>391</width>
+             <height>161</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="queueControlLabel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>141</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Queue Control</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="queuePlayButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>121</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Play</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="queueResumeButton">
+            <property name="geometry">
+             <rect>
+              <x>260</x>
+              <y>30</y>
+              <width>121</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Resume</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="queuePauseButton">
+            <property name="geometry">
+             <rect>
+              <x>140</x>
+              <y>30</y>
+              <width>111</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Pause</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="queueStopButton">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>80</y>
+              <width>121</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Stop</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="queueAbortButton">
+            <property name="geometry">
+             <rect>
+              <x>140</x>
+              <y>80</y>
+              <width>111</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Abort</string>
+            </property>
+           </widget>
+          </widget>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -65,7 +286,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>719</width>
+     <width>1171</width>
      <height>24</height>
     </rect>
    </property>

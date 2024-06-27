@@ -298,3 +298,4 @@ logs/
 .ruff_cache/*
 
 test_experiment/
+queueUI/qserverconnect.ipynb
